@@ -1,0 +1,83 @@
+
+/* header code with hover feature */
+.header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 20px 10px;
+  }
+  
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .header a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .header a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+   
+  .header-right {
+    float: right;
+  }
+
+/* header code ends here */
+
+
+
+#mid
+{
+    height: 500px;
+    width:100%;
+}
+
+/* In footer css main is wrapper class, inside wrapper there is footer_social and footerlast  */
+.wrapper {
+	margin: 0 auto;
+    width: 92%;
+}
+footer {
+	width:100%;
+	float:left;
+	background-color:#454850;
+}
+.footer_social {
+	width:100%;
+	padding:30px 0;
+	text-align:center;
+	border-bottom:solid 1px #585b61;
+}
+.footer_social ul {
+    width: 100%;
+    display:inline;
+	text-align:center;
+}
+.footer_social ul li {
+	display:inline-block;
+	padding:0 10px; /* to give spacing between logo*/
+   
+}
+.footerlast {
+	width:100%;
+	float:left;
+	padding:20px 0;
+	text-align:center;
+	font-size:15px;
+	color:#979eb1;
+}
+/* footer codes end here */
