@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:ctx="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+               http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+               
+
+
+	<ctx:component-scan base-package="com.lti.fg.daos, com.lti.fg.services"/>
+	
+	<!-- <bean id="UserDao" class="com.lti.fg.daos.UserDaoImpl"/>
+	<bean id="ProductDao" class="com.lti.fg.daos.ProductDaoImpl"/>
+	<bean id="CartDao" class="com.lti.fg.daos.CartDaoImpl"/>
+	
+	<bean id="UserService" class="com.lti.fg.services.UserServiceImpl"/>
+	<bean id="ProductService" class="com.lti.fg.services.ProductServiceImpl"/>
+	<bean id="CartService" class="com.lti.fg.services.CartServiceImpl"/>
+	 -->
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+	<property name="username" value="finance" />
+	<property name="password" value="finance" />
+	<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+	</bean>
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="com.lti.fg.entities">	</property>
+		<property name="dataSource" ref="ds"></property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="false"></property>
+				<property name="showSql" value="true"></property>
+				
+			</bean>
+		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
